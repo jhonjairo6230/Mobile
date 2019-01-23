@@ -18,5 +18,43 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/right_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        app:fab_labelsPosition="left"
+        app:fab_labelStyle="@style/menu_labels_style"
+        app:fab_addButtonColorNormal="@color/coffe"
+        app:fab_addButtonColorPressed="@color/white_pressed"
+        app:fab_addButtonPlusIconColor="@color/white"
+        app:fab_addButtonSize="normal"
+        >
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_add"
+            app:fab_plusIconColor="@color/white"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/white"
+            android:layout_centerHorizontal="true"
+            app:fab_addButtonSize="normal"
+            app:fab_title="Agregar"
+            android:layout_marginBottom="16dp"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_filter"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_size="normal"
+            app:fab_title="Filtrar"
+            app:fab_colorPressed="@color/white_pressed"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </RelativeLayout>
