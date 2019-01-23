@@ -13,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.DessertActivity">
+        </activity>
+        <activity android:name=".view.AddDessertActivity" />
+        <activity android:name=".view.DessertDetailActivity" />
+        <activity android:name=".view.BatterToppingActivity" />
+        <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AddDessertActivity" />
-        <activity android:name=".view.DessertDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -24,7 +24,6 @@ public class DessertPresenter {
     private final NetworkClient networkClient;
     private final ManageView.DessertView view;
     private CompositeSubscription subscriptions;
-    // private String[] types;
     private List<String> typesL = new ArrayList<>();
     private DessertResponseControl dc;
     private List<DessertResponse> dessertsList;
@@ -45,8 +44,9 @@ public class DessertPresenter {
                 dessertsList = dc.getAll();
                 if (dessertsList.size() <= 0) {
                     dc.createAll(dessertListResponse);
+                    dessertsList = dc.getAll();
                 } else {
-                    dessertsList = dessertListResponse;
+                    //dessertsList = dessertListResponse;
                 }
                 typesL.add("Todos");
                 for (DessertResponse d : dessertsList) {
@@ -79,6 +79,10 @@ public class DessertPresenter {
             case R.id.filterFBtn:
                 String[] types = typesL.toArray(new String[0]);
                 view.showFilterDialog(types);
+                break;
+            case R.id.getallFBtn:
+                dc.removeAllDessert();
+                getDessertList();
                 break;
             default:
                 break;

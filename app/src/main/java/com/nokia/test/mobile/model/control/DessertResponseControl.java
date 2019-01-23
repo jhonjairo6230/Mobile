@@ -126,6 +126,17 @@ public class DessertResponseControl {
 
     }
 
+    public boolean removeAllDessert() {
+        String sql = "DELETE * FROM " + tableName;
+        try {
+            db.execSQL(sql);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
     /*
      *
      * Batters

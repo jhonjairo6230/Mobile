@@ -3,10 +3,14 @@ package com.nokia.test.mobile.presenter;
 import android.content.Context;
 
 import com.nokia.test.mobile.model.DessertResponse;
+import com.nokia.test.mobile.model.Element;
 
 import java.util.List;
 
 public interface ManageView {
+    interface DessertDetailView {
+        void showDialog();
+    }
     interface DessertView {
         void showWait();
 
@@ -21,11 +25,13 @@ public interface ManageView {
         Context getViewContext();
     }
 
-    interface CreateDessertView {
+    interface AddDessertView {
         void addDessert();
     }
 
-    interface DessertDetailView {
-        //DessertResponse getElementSelect();
+    interface BatterToppingView{
+        void populateList(List<Element> elements);
     }
+
+
 }

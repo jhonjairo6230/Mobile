@@ -1,8 +1,14 @@
 package com.nokia.test.mobile.view;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +26,7 @@ public class DessertDetailActivity extends AppCompatActivity implements ManageVi
     private TextView textView0, textView1, textView2;
     private ListView lstBatters, lstToppings;
     private DessertDetailPresenter presenter;
+    private DessertResponse dessertSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,7 @@ public class DessertDetailActivity extends AppCompatActivity implements ManageVi
 
     public void init() {
         Gson gson = new Gson();
-        DessertResponse dessertSelected = gson.fromJson(getIntent().getStringExtra("dessertSelected"), DessertResponse.class);
+        dessertSelected = gson.fromJson(getIntent().getStringExtra("dessertSelected"), DessertResponse.class);
         textView0.setText(dessertSelected.getName());
         textView1.setText(dessertSelected.getType());
         textView2.setText(String.valueOf(dessertSelected.getPpu()));
@@ -64,6 +71,35 @@ public class DessertDetailActivity extends AppCompatActivity implements ManageVi
         textView2 = (TextView) findViewById(R.id.textView2);
         lstToppings = (ListView) findViewById(R.id.listTopping);
         lstBatters = (ListView) findViewById(R.id.listBatter);
+    }
+
+    public void deleteAction(View v){
+        presenter.showDialog();
+    }
+
+    @Override
+    public void showDialog() {
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getApplicationContext());
+        View view = layoutInflaterAndroid.inflate(R.layout.dialog_delete, null);
+        AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(DessertDetailActivity.this);
+        alertDialogBuilderUserInput.setView(view);
+        alertDialogBuilderUserInput
+                .setCancelable(false)
+                .setNegativeButton("Cancelar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                dialogBox.cancel();
+                            }
+                        })
+                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                            presenter.deleteDessert(getApplicationContext(),dessertSelected);
+                            finish();
+                    }
+                });
+        final AlertDialog alertDialog = alertDialogBuilderUserInput.create();
+        alertDialog.show();
 
     }
+
 }

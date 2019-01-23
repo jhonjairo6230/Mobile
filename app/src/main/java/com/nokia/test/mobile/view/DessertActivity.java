@@ -110,6 +110,12 @@ public class DessertActivity extends AppCompatActivity implements ManageView.Des
         return getApplicationContext();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.filterDessertByType("Todos");
+    }
+
     public void clickMenuButton(View v) {
         presenter.clickMenuButton(v);
     }

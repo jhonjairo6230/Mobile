@@ -11,8 +11,8 @@
         android:layout_weight="1"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
-        android:textSize="25sp"
         android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
         android:textStyle="normal" />
 
     <LinearLayout
@@ -45,18 +45,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textSize="15sp"
                 android:gravity="center_vertical|left"
-                android:text="textView1" />
+                android:text="textView1"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textSize="15sp"
                 android:gravity="center_vertical|left"
-                android:text="ppu" />
+                android:text="ppu"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -67,10 +67,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/background"
-        android:textColor="@color/white"
-        android:textSize="15sp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Batido" />
+        android:text="Batido"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <ListView
         android:id="@+id/listBatter"
@@ -84,10 +84,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/background"
-        android:textColor="@color/white"
-        android:textSize="15sp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Cubiertas" />
+        android:text="Cubiertas"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <ListView
         android:id="@+id/listTopping"
@@ -95,4 +95,11 @@
         android:layout_height="0dp"
         android:layout_weight="3"></ListView>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="deleteAction"
+        android:text="Borrar"
+        android:textColor="@color/white" />
 </LinearLayout>
