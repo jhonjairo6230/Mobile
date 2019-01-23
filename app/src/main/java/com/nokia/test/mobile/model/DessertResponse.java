@@ -79,10 +79,10 @@ class Batter{
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    public Integer id;
     @SerializedName("type")
     @Expose
-    private String type;
+    public String type;
 
     public Integer getId() {
         return id;
@@ -105,7 +105,7 @@ class Batters{
 
     @SerializedName("batter")
     @Expose
-    private List<Batter> batter = null;
+    public List<Batter> batter = null;
 
     public List<Batter> getBatter() {
         return batter;
@@ -119,10 +119,10 @@ class Batters{
 class Topping{
     @SerializedName("id")
     @Expose
-    private Integer id;
+    public Integer id;
     @SerializedName("type")
     @Expose
-    private String type;
+    public String type;
 
     public Integer getId() {
         return id;

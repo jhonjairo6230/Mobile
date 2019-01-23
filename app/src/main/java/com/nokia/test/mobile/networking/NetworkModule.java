@@ -25,7 +25,6 @@ public class NetworkModule {
     @Provides
     @Singleton
     Retrofit provideCall() {
-
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -43,9 +42,7 @@ public class NetworkModule {
                         return response;
                     }
                 })
-
                 .build();
-
 
         return new Retrofit.Builder()
                 .baseUrl(Constants.BASEURL)
@@ -54,5 +51,19 @@ public class NetworkModule {
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
+    }
+    @Provides
+    @Singleton
+    @SuppressWarnings("unused")
+    public NetworkService providesNetworkService(
+            Retrofit retrofit) {
+        return retrofit.create(NetworkService.class);
+    }
+    @Provides
+    @Singleton
+    @SuppressWarnings("unused")
+    public NetworkClient providesService(
+            NetworkService networkService) {
+        return new NetworkClient(networkService);
     }
 }
