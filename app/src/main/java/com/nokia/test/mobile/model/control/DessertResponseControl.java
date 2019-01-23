@@ -173,7 +173,7 @@ public class DessertResponseControl {
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Batter entry = new Batter(c.getInt(0), c.getString(1));
+                Batter entry = new Batter(c.getInt(0), c.getString(2));
                 objs.add(entry);
                 c.moveToNext();
             }
@@ -218,7 +218,7 @@ public class DessertResponseControl {
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Topping entry = new Topping(c.getInt(0), c.getString(1));
+                Topping entry = new Topping(c.getInt(0), c.getString(2));
                 objs.add(entry);
                 c.moveToNext();
             }

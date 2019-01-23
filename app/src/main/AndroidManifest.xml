@@ -16,7 +16,6 @@
         </activity>
         <activity android:name=".view.AddDessertActivity" />
         <activity android:name=".view.DessertDetailActivity" />
-        <activity android:name=".view.BatterToppingActivity" />
         <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

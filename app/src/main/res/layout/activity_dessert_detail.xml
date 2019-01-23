@@ -101,5 +101,6 @@
         android:layout_weight="1"
         android:onClick="deleteAction"
         android:text="Borrar"
+
         android:textColor="@color/white" />
 </LinearLayout>
