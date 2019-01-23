@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +32,7 @@ public class AddDessertActivity extends AppCompatActivity implements ManageView.
     private boolean isBatter = true;
     private List<Topping> t = new ArrayList<>();
     private List<Batter> b = new ArrayList<>();
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class AddDessertActivity extends AppCompatActivity implements ManageView.
                 showDialog();
                 break;
             case R.id.addBtn:
+                v.startAnimation(buttonClick);
                 String name = edt0.getText().toString();
                 String type = edt1.getText().toString();
                 String ppu = edt2.getText().toString();
@@ -80,6 +83,9 @@ public class AddDessertActivity extends AppCompatActivity implements ManageView.
         alertDialogBuilderUserInput.setView(view);
         final EditText id = view.findViewById(R.id.edt0);
         final EditText type = view.findViewById(R.id.edt1);
+        final TextView title = view.findViewById(R.id.title);
+        String textTitle = isBatter?"Agrega un Batido":"Agrega una Cubierta";
+        title.setText(textTitle);
         final AlertDialog alertDialog = alertDialogBuilderUserInput.create();
         alertDialog.show();
 
@@ -96,11 +102,17 @@ public class AddDessertActivity extends AppCompatActivity implements ManageView.
             public void onClick(View view) {
                 if (!id.getText().toString().isEmpty() && !type.getText().toString().isEmpty() && isBatter) {
                     b.add(new Batter(Integer.valueOf(id.getText().toString()), type.getText().toString()));
+                    alertDialog.dismiss();
+                } else {
+                    Toast.makeText(getApplicationContext(), "No dejes campos vacios", Toast.LENGTH_SHORT).show();
                 }
                 if (!id.getText().toString().isEmpty() && !type.getText().toString().isEmpty() && !isBatter) {
                     t.add(new Topping(Integer.valueOf(id.getText().toString()), type.getText().toString()));
+                    alertDialog.dismiss();
+                } else {
+                    Toast.makeText(getApplicationContext(), "No dejes campos vacios", Toast.LENGTH_SHORT).show();
                 }
-                alertDialog.dismiss();
+
             }
         });
     }

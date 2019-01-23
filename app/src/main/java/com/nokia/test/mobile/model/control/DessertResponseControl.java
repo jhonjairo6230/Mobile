@@ -97,8 +97,8 @@ public class DessertResponseControl {
         return objs;
     }
 
-    public List<DessertResponse> getFiltered(String type) {
-        String sql = "SELECT * FROM " + tableName + " WHERE type= '" + type+"'";
+    public List<DessertResponse> getFiltered(String t) {
+        String sql = "SELECT * FROM " + tableName+" WHERE type = '"+t+"'";
         Cursor c = db.rawQuery(sql, null);
         List<DessertResponse> objs = new ArrayList<DessertResponse>();
         if (c != null && c.getCount() > 0) {
@@ -126,16 +126,6 @@ public class DessertResponseControl {
 
     }
 
-    public boolean removeAllDessert() {
-        String sql = "DELETE * FROM " + tableName;
-        try {
-            db.execSQL(sql);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-
-    }
 
     /*
      *

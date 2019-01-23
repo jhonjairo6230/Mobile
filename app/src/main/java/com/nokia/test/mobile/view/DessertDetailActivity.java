@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class DessertDetailActivity extends AppCompatActivity implements ManageVi
     private ListView lstBatters, lstToppings;
     private DessertDetailPresenter presenter;
     private DessertResponse dessertSelected;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,7 @@ public class DessertDetailActivity extends AppCompatActivity implements ManageVi
     }
 
     public void deleteAction(View v){
+        v.startAnimation(buttonClick);
         presenter.showDialog();
     }
 

@@ -46,14 +46,8 @@ public class DessertPresenter {
                     dc.createAll(dessertListResponse);
                     dessertsList = dc.getAll();
                 } else {
-                    //dessertsList = dessertListResponse;
+                    dessertsList = dc.getAll();
                 }
-                typesL.add("Todos");
-                for (DessertResponse d : dessertsList) {
-                    typesL.add(d.getType());
-                }
-                typesL = new ArrayList(new LinkedHashSet(typesL));
-
                 view.removeWait();
                 view.getDessertListSuccess(dessertsList);
             }
@@ -77,12 +71,13 @@ public class DessertPresenter {
                 view.getViewContext().startActivity(addDessert);
                 break;
             case R.id.filterFBtn:
+                typesL.add("Todos");
+                for (DessertResponse d : dc.getAll()) {
+                    typesL.add(d.getType());
+                }
+                typesL = new ArrayList(new LinkedHashSet(typesL));
                 String[] types = typesL.toArray(new String[0]);
                 view.showFilterDialog(types);
-                break;
-            case R.id.getallFBtn:
-                dc.removeAllDessert();
-                getDessertList();
                 break;
             default:
                 break;

@@ -59,17 +59,6 @@
             android:onClick="clickMenuButton"
             app:fab_colorPressed="@color/white_pressed"
             />
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/getallFBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/colorPrimaryDark"
-            app:fab_size="normal"
-            app:fab_icon="@drawable/ic_down"
-            app:fab_title="Traer de la nube"
-            android:onClick="clickMenuButton"
-            app:fab_colorPressed="@color/white_pressed"
-            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </RelativeLayout>

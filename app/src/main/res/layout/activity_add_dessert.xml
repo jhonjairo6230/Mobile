@@ -159,6 +159,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:onClick="clickButton"
+        android:textColor="@color/white"
+        android:background="@color/green"
         android:text="Guardar" />
 
 
