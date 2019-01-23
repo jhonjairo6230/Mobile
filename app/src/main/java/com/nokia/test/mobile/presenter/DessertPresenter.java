@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.nokia.test.mobile.R;
 import com.nokia.test.mobile.model.DessertResponse;
 import com.nokia.test.mobile.networking.NetworkClient;
 import com.nokia.test.mobile.networking.NetworkError;
 import com.nokia.test.mobile.view.AddDessertActivity;
+import com.nokia.test.mobile.view.DessertDetailActivity;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -85,8 +87,17 @@ public class DessertPresenter {
         }
     }
 
-    public void filterDessertByType(String type){
-        Log.d("P","pendiente filtro "+type);
+    public void filterDessertByType(String type) {
+        Log.d("P", "pendiente filtro " + type);
+    }
+
+    public void showDessertSelected(DessertResponse dessertSelected) {
+        Intent DessertDetail = new Intent(view.getViewContext(), DessertDetailActivity.class);
+        DessertDetail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Gson gson = new Gson();
+        String myJson = gson.toJson(dessertSelected);
+        DessertDetail.putExtra("dessertSelected", myJson);
+        view.getViewContext().startActivity(DessertDetail);
     }
 
     public void onStop() {

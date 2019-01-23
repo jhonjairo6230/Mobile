@@ -1,28 +1,26 @@
 package com.nokia.test.mobile.view;
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.nokia.test.mobile.R;
-
 import com.nokia.test.mobile.dependencies.DaggerDependency;
+import com.nokia.test.mobile.model.Batter;
 import com.nokia.test.mobile.model.DessertResponse;
+import com.nokia.test.mobile.model.Topping;
 import com.nokia.test.mobile.networking.NetworkClient;
 import com.nokia.test.mobile.networking.NetworkModule;
 import com.nokia.test.mobile.presenter.DessertPresenter;
@@ -71,9 +69,7 @@ public class DessertActivity extends AppCompatActivity implements ManageView.Des
                 new DessertAdapter.OnItemClickListener() {
                     @Override
                     public void onClick(DessertResponse Item) {
-//                        presenter.goToCreate(getApplicationContext());
-                        Toast.makeText(getApplicationContext(), Item.getName(),
-                                Toast.LENGTH_LONG).show();
+                       presenter.showDessertSelected(Item);
                     }
                 });
 

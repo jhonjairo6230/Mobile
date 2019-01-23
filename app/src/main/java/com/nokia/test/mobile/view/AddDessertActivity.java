@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.nokia.test.mobile.R;
+import com.nokia.test.mobile.model.DessertResponse;
+import com.nokia.test.mobile.presenter.ManageView;
 
 public class AddDessertActivity extends AppCompatActivity {
 
@@ -12,4 +14,6 @@ public class AddDessertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dessert);
     }
+
+
 }

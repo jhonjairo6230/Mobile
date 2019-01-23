@@ -25,7 +25,7 @@ public interface ManageView {
         void addDessert();
     }
 
-    interface UpdateDessertView {
-
+    interface DessertDetailView {
+        //DessertResponse getElementSelect();
     }
 }
