@@ -35,6 +35,7 @@
         >
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addFBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_icon="@drawable/ic_add"
@@ -44,15 +45,18 @@
             android:layout_centerHorizontal="true"
             app:fab_addButtonSize="normal"
             app:fab_title="Agregar"
+            android:onClick="clickMenuButton"
             android:layout_marginBottom="16dp"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/filterFBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_icon="@drawable/ic_filter"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_size="normal"
             app:fab_title="Filtrar"
+            android:onClick="clickMenuButton"
             app:fab_colorPressed="@color/white_pressed"
             />
 
