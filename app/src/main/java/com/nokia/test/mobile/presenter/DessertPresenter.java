@@ -1,6 +1,5 @@
 package com.nokia.test.mobile.presenter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -8,29 +7,17 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.nokia.test.mobile.R;
 import com.nokia.test.mobile.model.DessertResponse;
+import com.nokia.test.mobile.model.control.DessertResponseControl;
 import com.nokia.test.mobile.networking.NetworkClient;
 import com.nokia.test.mobile.networking.NetworkError;
 import com.nokia.test.mobile.view.AddDessertActivity;
 import com.nokia.test.mobile.view.DessertDetailActivity;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-import rx.Observable;
-import rx.Observer;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class DessertPresenter {
@@ -39,11 +26,14 @@ public class DessertPresenter {
     private CompositeSubscription subscriptions;
     // private String[] types;
     private List<String> typesL = new ArrayList<>();
+    private DessertResponseControl dc;
+    private List<DessertResponse> dessertsList;
 
     public DessertPresenter(NetworkClient networkClient, ManageView.DessertView view) {
         this.networkClient = networkClient;
         this.view = view;
         this.subscriptions = new CompositeSubscription();
+        dc = new DessertResponseControl(view.getViewContext());
     }
 
     public void getDessertList() {
@@ -52,12 +42,20 @@ public class DessertPresenter {
         Subscription subscription = networkClient.getDessertList(new NetworkClient.GetDessertListCallback() {
             @Override
             public void onSuccess(List<DessertResponse> dessertListResponse) {
-                for (DessertResponse d : dessertListResponse) {
+                dessertsList = dc.getAll();
+                if (dessertsList.size() <= 0) {
+                    dc.createAll(dessertListResponse);
+                } else {
+                    dessertsList = dessertListResponse;
+                }
+                typesL.add("Todos");
+                for (DessertResponse d : dessertsList) {
                     typesL.add(d.getType());
                 }
                 typesL = new ArrayList(new LinkedHashSet(typesL));
+
                 view.removeWait();
-                view.getDessertListSuccess(dessertListResponse);
+                view.getDessertListSuccess(dessertsList);
             }
 
             @Override
@@ -88,7 +86,11 @@ public class DessertPresenter {
     }
 
     public void filterDessertByType(String type) {
-        Log.d("P", "pendiente filtro " + type);
+        if (type.equalsIgnoreCase("todos")) {
+            view.getDessertListSuccess(dc.getAll());
+        } else {
+            view.getDessertListSuccess(dc.getFiltered(type));
+        }
     }
 
     public void showDessertSelected(DessertResponse dessertSelected) {

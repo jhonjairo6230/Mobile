@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mobile</string>
+    <string name="db_name">desserts.sqlite</string>
 </resources>

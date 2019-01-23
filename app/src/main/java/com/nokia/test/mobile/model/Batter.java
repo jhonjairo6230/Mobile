@@ -27,4 +27,9 @@ public class Batter{
     public void setType(String type) {
         this.type = type;
     }
+
+    public Batter(Integer id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 }

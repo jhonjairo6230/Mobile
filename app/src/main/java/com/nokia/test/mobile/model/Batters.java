@@ -18,4 +18,8 @@ public class Batters{
     public void setBatter(List<Batter> batter) {
         this.batter = batter;
     }
+
+    public Batters(List<Batter> batter) {
+        this.batter = batter;
+    }
 }

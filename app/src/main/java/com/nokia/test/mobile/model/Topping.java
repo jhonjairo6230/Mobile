@@ -26,4 +26,9 @@ public class Topping {
     public void setType(String type) {
         this.type = type;
     }
+
+    public Topping(Integer id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 }

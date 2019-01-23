@@ -26,6 +26,16 @@ public class DessertResponse {
     @Expose
     private List<Topping> topping = null;
 
+
+    public DessertResponse(Integer id, String type, String name, Double ppu, Batters batters, List<Topping> topping) {
+        this.id = id;
+        this.type = type;
+        this.name = name;
+        this.ppu = ppu;
+        this.batters = batters;
+        this.topping = topping;
+    }
+
     public Integer getId() {
         return id;
     }

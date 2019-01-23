@@ -37,7 +37,7 @@ public class DessertAdapter extends RecyclerView.Adapter<DessertAdapter.ViewHold
         holder.click(data.get(position), listener);
         holder.textView1.setText(data.get(position).getName());
         holder.textView2.setText(data.get(position).getType());
-        holder.textView3.setText("Batters: " + data.get(position).getPpu());
+        holder.textView3.setText("Batters: " + data.get(position).getBatters().getBatter().size());
         holder.textView4.setText("Toppings: "+data.get(position).getTopping().size());
 
     }
