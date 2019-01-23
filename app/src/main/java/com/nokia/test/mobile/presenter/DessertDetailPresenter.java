@@ -20,7 +20,7 @@ public class DessertDetailPresenter {
 
     public void deleteDessert(Context c,DessertResponse dessertSelected){
         dc = new DessertResponseControl(c.getApplicationContext());
-        dc.removeDessert(dessertSelected.getId());
+       // dc.removeDessert(dessertSelected.getId());
     }
 
 }
