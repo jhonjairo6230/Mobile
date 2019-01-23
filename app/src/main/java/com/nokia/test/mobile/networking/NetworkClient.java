@@ -18,7 +18,7 @@ public class NetworkClient {
         this.networkService = networkService;
     }
 
-    public Subscription getCityList(final GetCityListCallback callback) {
+    public Subscription getDessertList(final GetDessertListCallback callback) {
 
         return networkService.getDessertList()
                 .subscribeOn(Schedulers.io())
@@ -49,7 +49,7 @@ public class NetworkClient {
                 });
     }
 
-    public interface GetCityListCallback{
+    public interface GetDessertListCallback{
         void onSuccess(List<DessertResponse> dessertListResponse);
 
         void onError(NetworkError networkError);

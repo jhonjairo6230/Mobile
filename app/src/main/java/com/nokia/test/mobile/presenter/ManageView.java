@@ -12,7 +12,7 @@ public interface ManageView {
 
         void onFailure(String appErrorMessage);
 
-        void getCityListSuccess(List<DessertResponse> cityListResponse);
+        void getDessertListSuccess(List<DessertResponse> dessertListResponse);
     }
 
     interface CreateDessertView{
